@@ -1,17 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, of, switchMap, throwError } from 'rxjs';
-import config from '../../../shared/config';
 import { HttpCommonResponse, HttpProductResponse, HttpPutProductResponse } from '../../../shared/models/HttpResponse';
 import { ApiKeyService } from '../localStorage/apiKey/api-key.service';
-import { Product } from '../../../shared/models/Product';
+import { environment } from '../../../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  private endpoint = config.apiURL;
+  private endpoint = environment.API_URL;
 
   constructor(private http: HttpClient, private apiKeyService: ApiKeyService) { }
 

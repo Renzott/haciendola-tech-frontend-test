@@ -60,7 +60,7 @@ dependencies:
 devDependencies:
   '@angular-devkit/build-angular':
     specifier: ^17.3.7
-    version: 17.3.7(@angular/compiler-cli@17.3.8)(@types/node@20.12.12)(karma@6.4.3)(typescript@5.4.5)
+    version: 17.3.7(@angular/compiler-cli@17.3.8)(karma@6.4.3)(typescript@5.4.5)
   '@angular/cli':
     specifier: ^17.3.7
     version: 17.3.7
@@ -70,9 +70,6 @@ devDependencies:
   '@types/jasmine':
     specifier: ~5.1.0
     version: 5.1.4
-  '@types/node':
-    specifier: ^20.12.12
-    version: 20.12.12
   jasmine-core:
     specifier: ~5.1.0
     version: 5.1.2
@@ -115,7 +112,7 @@ packages:
       - chokidar
     dev: true
 
-  /@angular-devkit/build-angular@17.3.7(@angular/compiler-cli@17.3.8)(@types/node@20.12.12)(karma@6.4.3)(typescript@5.4.5):
+  /@angular-devkit/build-angular@17.3.7(@angular/compiler-cli@17.3.8)(karma@6.4.3)(typescript@5.4.5):
     resolution: {integrity: sha512-AsV80kiFMIPIhm3uzJgOHDj4u6JteUkZedPTKAFFFJC7CTat1luW5qx306vfF7wj62aMvUl5g9HFWaeLghTQGA==}
     engines: {node: ^18.13.0 || >=20.9.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
     peerDependencies:
@@ -215,7 +212,7 @@ packages:
       tslib: 2.6.2
       typescript: 5.4.5
       undici: 6.11.1
-      vite: 5.1.7(@types/node@20.12.12)(less@4.2.0)(sass@1.71.1)(terser@5.29.1)
+      vite: 5.1.7(less@4.2.0)(sass@1.71.1)(terser@5.29.1)
       watchpack: 2.4.0
       webpack: 5.90.3(esbuild@0.20.1)
       webpack-dev-middleware: 6.1.2(webpack@5.90.3)
@@ -2794,7 +2791,7 @@ packages:
     peerDependencies:
       vite: ^3.0.0 || ^4.0.0 || ^5.0.0
     dependencies:
-      vite: 5.1.7(@types/node@20.12.12)(less@4.2.0)(sass@1.71.1)(terser@5.29.1)
+      vite: 5.1.7(less@4.2.0)(sass@1.71.1)(terser@5.29.1)
     dev: true
 
   /@webassemblyjs/ast@1.12.1:
@@ -7989,7 +7986,7 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /vite@5.1.7(@types/node@20.12.12)(less@4.2.0)(sass@1.71.1)(terser@5.29.1):
+  /vite@5.1.7(less@4.2.0)(sass@1.71.1)(terser@5.29.1):
     resolution: {integrity: sha512-sgnEEFTZYMui/sTlH1/XEnVNHMujOahPLGMxn1+5sIT45Xjng1Ec1K78jRP15dSmVgg5WBin9yO81j3o9OxofA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -8017,7 +8014,6 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.12.12
       esbuild: 0.19.12
       less: 4.2.0
       postcss: 8.4.35
