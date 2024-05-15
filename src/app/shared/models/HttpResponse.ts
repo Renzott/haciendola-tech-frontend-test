@@ -14,10 +14,12 @@ export interface HttpPutProductResponse {
 export interface HttpTokenResponse {
     message: string;
     token: string;
+    ok: boolean;
 }
 
-export interface HttpResetPasswordResponse {
+export interface HttpUserResponse {
     message: string;
+    ok: boolean;
 }
 
 export interface HttpCommonResponse {

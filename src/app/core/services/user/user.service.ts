@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { HttpTokenResponse } from '../../../shared/models/HttpResponse';
+import { BehaviorSubject, Observable, catchError, of } from 'rxjs';
+import { HttpTokenResponse, HttpUserResponse } from '../../../shared/models/HttpResponse';
 import { ApiKeyService } from '../localStorage/apiKey/api-key.service';
 import { environment } from '../../../../environments/environment';
 
@@ -10,19 +10,28 @@ import { environment } from '../../../../environments/environment';
 })
 export class UserService {
 
-  private endpoint = `${environment.API_URL}/login`;
-
   private loggedEvent$ = new BehaviorSubject<boolean>(false);
   logged$ = this.loggedEvent$.asObservable();
 
-  constructor(private http: HttpClient, private apiKeyService: ApiKeyService) { 
+  constructor(private http: HttpClient, private apiKeyService: ApiKeyService) {
     this.apiKeyService.token$.subscribe((key) => {
       this.loggedEvent$.next(key != null);
     });
   }
 
-  login(email: string, password: string): Observable<HttpTokenResponse> {
-    return this.http.post<HttpTokenResponse>(this.endpoint, { email, password });
+  login(email: string, password: string): Observable<HttpTokenResponse | null> {
+    return this.http.post<HttpTokenResponse>(`${environment.API_URL}/login`, { email, password }).pipe(
+      catchError(error => {
+        return of(error.error);
+      })
+    );
+  }
+  resetPassword(email: string, username: string, password: string, confirmPassword: string): Observable<HttpUserResponse | null> {
+    return this.http.put<HttpTokenResponse>(`${environment.API_URL}/resetpassword`, { email, username, password, confirmPassword }).pipe(
+      catchError(error => {
+        return of(error.error);
+      })
+    );
   }
 
   logout() {

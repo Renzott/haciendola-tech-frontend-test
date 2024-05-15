@@ -5,12 +5,12 @@ import { ApiKeyService } from '../../core/services/localStorage/apiKey/api-key.s
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { MessageService } from 'primeng/api';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, InputTextModule, ButtonModule],
+  imports: [FormsModule, ReactiveFormsModule, InputTextModule, ButtonModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -26,11 +26,16 @@ export class LoginComponent {
   onSubmit(): void {
     
     const { email = "", password = "" } = this.loginForm.value;
-    if (!email || !password) {      
+    if (!email || !password) { 
+      this.messageService.add({severity:'error', summary:'Campos vacíos', detail:'Por favor, completa todos los campos.'});     
       return;
     }
 
     this.userService.login(email, password).subscribe((data) => {
+        if (!data) {
+          this.messageService.add({severity:'error', summary:'Error', detail:'Ocurrió un error al intentar iniciar sesión.'});
+          return;
+        }
         if (data.token) {
           this.apiKeyService.setApiKey(data.token);
           this.messageService.add({severity:'success', summary:'Inicio de sesión exitoso', detail:'Bienvenido a Haciendola Prueba Tech.'});
