@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, of, switchMap, throwError } from 'rxjs';
 import { HttpCommonResponse, HttpProductResponse, HttpPutProductResponse } from '../../../shared/models/HttpResponse';
 import { ApiKeyService } from '../localStorage/apiKey/api-key.service';
-import { environment } from '../../../../environments/environment.development';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
