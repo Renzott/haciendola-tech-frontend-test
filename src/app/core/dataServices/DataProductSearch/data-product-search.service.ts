@@ -1,30 +1,34 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 import { ProductService } from '../../services/product/product.service';
+import { HttpProductResponse } from '../../../shared/models/HttpResponse';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataProductSearchService {
 
-  private searchDataSubject = new BehaviorSubject<string>('');
-  searchData$ = this.searchDataSubject.asObservable();
+  private searchDataSubject$ = new BehaviorSubject<string>('');
+  searchData$ = this.searchDataSubject$.asObservable();
 
-  private productsDataResultSubject$ = new BehaviorSubject<any[]>([]);
+  private productsDataResultSubject$ = new BehaviorSubject<HttpProductResponse | null>({ data: [], status: 0 });
   searchDataResults$ = this.productsDataResultSubject$.asObservable();
 
   constructor(private productService: ProductService) {
     this.searchData$.pipe(
       debounceTime(500),
-      distinctUntilChanged(),
       switchMap((searchTerm) => this.productService.searchProducts(searchTerm))
-    ).subscribe(data => {
-      console.log(data);
-      this.productsDataResultSubject$.next(data.data);
+    ).subscribe(response => {
+      this.productsDataResultSubject$.next(response);
     })
   }
 
-  updateSearchData(data: string) {
-    this.searchDataSubject.next(data);
+  updateSearchData(query: string) {
+    this.searchDataSubject$.next(query);
   }
+
+  refreshSearchData() {
+    this.searchDataSubject$.next(this.searchDataSubject$.value);
+  }
+
 }

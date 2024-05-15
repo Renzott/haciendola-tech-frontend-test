@@ -1,0 +1,36 @@
+.itemContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    margin: 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    height: 240px;
+    min-width: 240px;
+    overflow: hidden;
+    position: relative;
+
+    &:hover {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .itemImage{
+        width: 96px;
+        height: 96px;
+        object-fit: fill;
+    }
+
+    .itemTitle {
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin-top: 1rem;
+        text-align: center;
+    }
+
+}

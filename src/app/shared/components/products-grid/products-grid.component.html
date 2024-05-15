@@ -1,1 +1,7 @@
-<p>products-grid works!</p>
+<div class="gridContainer">
+  <div class="" *ngFor="let product of renderedProducts">
+    <app-product-item-grid [product]="product"></app-product-item-grid>
+  </div>
+  
+</div>
+<p-paginator (onPageChange)="onPageChange($event)" [first]="fisrt" [rows]="rows" [totalRecords]="totalRecords" [pageLinkSize]="pageLinkSize" showFirstLastIcon="false"/>

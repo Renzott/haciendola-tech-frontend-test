@@ -5,6 +5,12 @@ export interface HttpProductResponse {
     status: number;
 }
 
+export interface HttpPutProductResponse {
+    data: Product;
+    status: number;
+    message: string;
+}
+
 export interface HttpTokenResponse {
     message: string;
     token: string;
@@ -12,4 +18,9 @@ export interface HttpTokenResponse {
 
 export interface HttpResetPasswordResponse {
     message: string;
+}
+
+export interface HttpCommonResponse {
+    message: string;
+    status: number;
 }

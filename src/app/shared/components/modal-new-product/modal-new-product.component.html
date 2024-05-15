@@ -1,0 +1,89 @@
+<p-dialog header="Nuevo Producto" [modal]="true" [(visible)]="isModalVisible" [resizable]="false" [draggable]="false"
+    (onHide)="closeModal()" [style]="{ width: '40rem' }">
+    <form [formGroup]="newForm">
+        <div class="field">
+            <h4 for="sku">SKU (AutoGenerado)</h4>
+            <input id="sku" type="text"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                formControlName="sku" readonly>
+        </div>
+
+        <div class="field">
+            <h4 for="barcode">Código de Barras</h4>
+            <input id="barcode" type="text"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                formControlName="barcode">
+        </div>
+
+
+        <div class="field">
+            <h4 for="title">Título</h4>
+            <input id="title" type="text"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                formControlName="title">
+        </div>
+
+        <div class="field">
+            <h4 for="handle">Handle</h4>
+            <input id="handle" type="text"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                formControlName="handle">
+        </div>
+
+        <div class="field">
+            <h4 for="price">Precio</h4>
+            <input id="price" type="number"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                formControlName="price">
+        </div>
+
+        <div class="field">
+            <h4 for="price">Precio de Comparación</h4>
+            <input id="price" type="number"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                formControlName="comparePrice">
+        </div>
+
+
+        <div class="field">
+            <h4 for="stock">Stock</h4>
+            <input id="stock" type="number"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                formControlName="stock">
+        </div>
+
+        <div class="field">
+            <h4 for="grams">Peso</h4>
+            <input id="grams" type="number"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                formControlName="grams">
+        </div>
+
+        <div class="field">
+            <div class="flex justify-content-between">
+                <h4 for="description">Descripción</h4>
+                <div *ngIf="!isVisualMarkdown; else previewButton">
+                    <p-button label="Preview" severity="info" outlined="true" icon="pi pi-eye" class="w-20 p-2" (onClick)="previewDescription()"></p-button>
+                </div>
+
+                <ng-template #previewButton>
+                    <p-button label="Editar" severity="info" outlined="true" icon="pi pi-pencil" class="w-20 p-2" (onClick)="previewDescription()"></p-button>
+                </ng-template>
+            </div>
+
+            <div *ngIf="!isVisualMarkdown; else preview ">
+                <textarea id="description" rows="8" cols="60" pInputTextarea
+                    class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                    formControlName="description"></textarea>
+            </div>
+            <ng-template #preview class="w-full">
+                <markdown [data]="newForm.value.description"></markdown>
+            </ng-template>
+        </div>
+
+        <div class="flex justify-content-end gap-3 mt-4">
+            <p-button label="Cancelar" [outlined]="true" (click)="closeModal()" />
+            <p-button label="Guardar" (onClick)="updateProduct()" />
+        </div>
+    </form>
+</p-dialog>

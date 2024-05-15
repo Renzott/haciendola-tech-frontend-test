@@ -1,0 +1,105 @@
+<p-dialog header="{{product.title}}" [modal]="true" [(visible)]="isModalVisible" [resizable]="false" [draggable]="false"
+    class="modalItem" [style]="{ width: '40rem' }" (onHide)="closeModal()">
+    <div *ngIf="!isEditMode; else content" class="surface-section">
+        <div class="font-medium text-3xl text-900 mb-3">Informacion del Producto</div>
+        <div class="text-500 mb-5">
+
+        </div>
+        <ul class="list-none p-0 m-0">
+            <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+                <div class="text-500 w-6 md:w-4 font-medium">SKU</div>
+                <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{{ product.sku }}</div>
+            </li>
+
+            <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+                <div class="text-500 w-6 md:w-4 font-medium">Código de Barras</div>
+                <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{{ product.barcode }}</div>
+            </li>
+
+            <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+                <div class="text-500 w-6 md:w-4 font-medium">Precio</div>
+                <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">${{ product.price }}</div>
+            </li>
+            <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+                <div class="text-500 w-6 md:w-4 font-medium">Precio de Comparación</div>
+                <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">${{ product.comparePrice }}</div>
+            </li>
+            <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+                <div class="text-500 w-6 md:w-4 font-medium">Stock</div>
+                <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{{ product.stock }}</div>
+            </li>
+            <li class="flex align-items-center py-3 px-2 border-top-1 border-bottom-1 surface-border flex-wrap">
+                <h3 class="text-500 w-12">Description</h3>
+                <markdown [data]="product.description"></markdown>
+            </li>
+        </ul>
+    </div>
+    <ng-template #content>
+        <form [formGroup]="editForm">
+            <div class="field">
+                <h4 for="sku">SKU (Desactivado)</h4>
+                <input id="sku" type="text"
+                    class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                    formControlName="sku" readonly>
+            </div>
+
+            <div class="field">
+                <h4 for="barcode">Código de Barras</h4>
+                <input id="barcode" type="text"
+                    class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                    formControlName="barcode">
+            </div>
+            
+
+            <div class="field">
+                <h4 for="title">Título</h4>
+                <input id="title" type="text"
+                    class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                    formControlName="title">
+            </div>
+
+            <div class="field">
+                <h4 for="price">Precio</h4>
+                <input id="price" type="number"
+                    class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                    formControlName="price">
+            </div>
+
+            <div class="field">
+                <h4 for="price">Precio de Comparación</h4>
+                <input id="price" type="number"
+                    class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                    formControlName="comparePrice">
+            </div>
+
+
+            <div class="field">
+                <h4 for="stock">Stock</h4>
+                <input id="stock" type="number"
+                    class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                    formControlName="stock">
+            </div>
+
+            <div class="field">
+                <h4 for="description">Descripción</h4>
+                <textarea id="description" rows="8" cols="60" pInputTextarea
+                    class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                    formControlName="description"></textarea>
+            </div>
+        </form>
+    </ng-template>
+
+    <div *ngIf="!isEditMode; else footer">
+        <div class="flex justify-content-end gap-3 mt-4">
+            <a pButton pRipple label="Eliminar" [outlined]="true" severity="danger" (click)="deleteProduct()"> </a>
+            <a pButton pRipple label="Editar" severity="warning" (click)="isEditMode = true" onFocus="false"> </a>
+        </div>
+    </div>
+
+    <ng-template #footer>
+        <div class="flex justify-content-end gap-3 mt-4">
+            <p-button label="Cancelar" [outlined]="true" (click)="cancelEdit()" />
+            <p-button label="Guardar" (onClick)="updateProduct()" />
+        </div>
+    </ng-template>
+</p-dialog>

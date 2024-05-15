@@ -1,0 +1,11 @@
+<div class="itemContainer" (click)="showProductDialog()">
+    <div class="itemTitle my-2">
+        {{ product.title }}
+    </div>
+    <img src="{{product.image}}" alt="{{ product.title }}" class="itemImage">
+    
+    <div class="my-2">
+        <span class="text-sm text-gray-500">$ {{ product.price }} </span>
+    </div>
+</div>
+

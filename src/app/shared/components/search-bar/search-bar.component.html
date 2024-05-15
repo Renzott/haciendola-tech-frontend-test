@@ -1,5 +1,17 @@
-<p-iconField iconPosition="left">
-    <p-inputIcon styleClass="pi pi-search" />
-    <input type="text" pInputText placeholder="Search" (input)="onSearch($event)" />
-    <p-button label="Submit" />
-</p-iconField>
+<div class="flex flex-column mx-3">
+    <div class="w-12">
+        <h2 class="text-color">Buscador de Productos</h2>
+    </div>
+
+    <div class="flex gap-2 w-full">
+        <div class="w-10">
+            <p-iconField class="w-full" iconPosition="left">
+                <p-inputIcon styleClass="pi pi-search" />
+                <input type="text" pInputText placeholder="Search" class="w-12" (input)="onSearch($event)" />
+            </p-iconField>
+        </div>
+        <div class="flex w-2">
+            <button pButton [label]="labelDesktop" (click)="showNewProductModal()" icon="pi pi-plus-circle" class="w-full"></button>
+        </div>
+    </div>
+</div>
