@@ -1,27 +1,31 @@
-# HaciendolaTechFrontendTest
+# Haciendola Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
+## Descripción
+Este proyecto es una aplicación frontend que permite a los usuarios encontrar, actualizar, borar y crear productos de una tienda. Tambien permite hacer una busqueda de productos por nombre.
 
-## Development server
+## Tecnologías
+- TypeScript
+- Angular
+- RxJS
+- PrimeNG
+- PrimeFlex
+- PrimeIcons
+- Markdown
+- Github Actions
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Credeniales
 
-## Code scaffolding
+Las credenciales del usuario fueron enviadas en el correo de la entrega del test.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Instalación
 
-## Build
+Para instalar el proyecto se debe clonar el repositorio y ejecutar el siguiente comando en la terminal:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Clonar el repositorio
+2. Instalar Angular CLI con `npm install -g @angular/cli` o `pnpm install -g @angular/cli` (recomendado)
+3. Instalar las dependencias con `npm install` o `pnpm install`
+4. Correr el servidor con `npm run dev` o `pnpm run dev`
 
-## Running unit tests
+## Backend
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+El backend de la aplicación se encuentra en el siguiente repositorio: [Haciendola Backend](https://github.com/Renzott/haciendola-tech-backend-test)
